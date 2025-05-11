@@ -23,7 +23,7 @@ Puzzle Shop is a minimalist e-commerce project focused on selling twisty puzzles
 
 ## 📸 Mockup
 
-Find the mockup for the initial design inside the `resources` folder.
+![**Mockup**](./resources/mockup.png)
 
 ## 🚀 Getting Started
 
