@@ -26,12 +26,12 @@ export type UserProviderT = (typeof UserProviderE)[keyof typeof UserProviderE];
 
 @Schema()
 export class User {
-  @Prop({ required: true, type: mongoose.Schema.Types.String })
+  @Prop({ type: mongoose.Schema.Types.String, required: true })
   name: string;
 
   @Prop({
-    required: true,
     type: mongoose.Schema.Types.String,
+    required: true,
     unique: true,
   })
   email: string;
@@ -40,12 +40,17 @@ export class User {
   password: string;
 
   @Prop({
-    type: UserRoleE,
+    type: mongoose.Schema.Types.String,
+    enum: UserProviderE,
     default: UserRoleE.CUSTOMER,
   })
   role: UserRoleT;
 
-  @Prop({ type: UserProviderE, default: UserProviderE.EMAIL })
+  @Prop({
+    type: mongoose.Schema.Types.String,
+    enum: UserProviderE,
+    default: UserProviderE.EMAIL,
+  })
   provider: UserProviderT;
 
   @Prop({
