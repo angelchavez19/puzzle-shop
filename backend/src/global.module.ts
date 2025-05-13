@@ -33,6 +33,6 @@ import { User, UserSchema } from './schemas/user.schema';
     ]),
   ],
   providers: [ConfigService, ConfigCommonService],
-  exports: [ConfigService, ConfigCommonService],
+  exports: [ConfigService, ConfigCommonService, MongooseModule],
 })
 export class GlobalModule {}

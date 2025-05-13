@@ -45,6 +45,7 @@ export class Product {
     type: mongoose.Schema.Types.Date,
     required: true,
     name: 'created_at',
+    default: Date.now,
   })
   createdAt: Date;
 
@@ -52,6 +53,7 @@ export class Product {
     type: mongoose.Schema.Types.Date,
     required: true,
     name: 'updated_at',
+    default: Date.now,
   })
   updatedAt: Date;
 
