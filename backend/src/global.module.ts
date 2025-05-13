@@ -1,14 +1,10 @@
-import { Module } from '@nestjs/common';
-import { ConfigModule, ConfigService } from '@nestjs/config';
+import { Global, Module } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
 import { ConfigCommonService } from './common/config.common';
 
+@Global()
 @Module({
-  imports: [
-    ConfigModule.forRoot({
-      envFilePath: '.env',
-    }),
-  ],
-  controllers: [],
+  imports: [],
   providers: [ConfigService, ConfigCommonService],
   exports: [ConfigService, ConfigCommonService],
 })
