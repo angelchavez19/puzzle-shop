@@ -18,7 +18,12 @@ export class Coupon {
   @Prop({ type: mongoose.Schema.Types.String, required: true })
   code: string;
 
-  @Prop({ type: CouponDiscountTypeE, required: true, name: 'discount_type' })
+  @Prop({
+    type: mongoose.Schema.Types.String,
+    enum: CouponDiscountTypeE,
+    required: true,
+    name: 'discount_type',
+  })
   discountType: CouponDiscountTypeT;
 
   @Prop({

@@ -28,7 +28,11 @@ export class Order {
   @Prop({ type: mongoose.Schema.Types.Number, required: true })
   total: number;
 
-  @Prop({ type: OrderStatusE, required: true })
+  @Prop({
+    type: mongoose.Schema.Types.String,
+    enum: OrderStatusE,
+    required: true,
+  })
   status: OrderStatusT;
 
   @Prop({

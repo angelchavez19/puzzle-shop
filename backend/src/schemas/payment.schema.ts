@@ -22,10 +22,18 @@ export type PaymentStatusT =
 
 @Schema()
 export class Payment {
-  @Prop({ type: PaymentMethodE, required: true })
+  @Prop({
+    type: mongoose.Schema.Types.String,
+    enum: PaymentMethodE,
+    required: true,
+  })
   method: PaymentMethodT;
 
-  @Prop({ type: PaymentStatusE, required: true })
+  @Prop({
+    type: mongoose.Schema.Types.String,
+    enum: PaymentStatusE,
+    required: true,
+  })
   status: PaymentStatusT;
 
   @Prop({ type: mongoose.Schema.Types.String, name: 'transaction_id' })
