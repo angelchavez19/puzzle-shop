@@ -10,7 +10,6 @@ import { Coupon } from './coupon.schema';
 export const UserRoleE = {
   CUSTOMER: 'CUSTOMER',
   ADMIN: 'ADMIN',
-  STAFF: 'STAFF',
   SUPER_ADMIN: 'SUPER_ADMIN',
 } as const;
 
