@@ -13,6 +13,9 @@ export class Product {
   @Prop({ type: mongoose.Schema.Types.String, required: true })
   name: string;
 
+  @Prop({ type: mongoose.Schema.Types.String, required: true, unique: true })
+  slug: string;
+
   @Prop({
     type: mongoose.Schema.Types.Mixed,
     required: true,
@@ -56,6 +59,14 @@ export class Product {
     default: Date.now,
   })
   updatedAt: Date;
+
+  @Prop({
+    type: mongoose.Schema.Types.Boolean,
+    required: true,
+    name: 'is_delete',
+    default: false,
+  })
+  isDelete: false;
 
   @Prop({ type: [mongoose.Schema.Types.ObjectId], ref: 'Order' })
   orders: Order[];

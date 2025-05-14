@@ -26,6 +26,14 @@ export class Category {
   })
   updatedAt: Date;
 
+  @Prop({
+    type: mongoose.Schema.Types.Boolean,
+    required: true,
+    name: 'is_delete',
+    default: false,
+  })
+  isDelete: false;
+
   @Prop({ type: [mongoose.Schema.Types.ObjectId], ref: 'Product' })
   products: Product[];
 

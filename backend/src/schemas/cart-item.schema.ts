@@ -27,6 +27,14 @@ export class CartItem {
   })
   updatedAt: Date;
 
+  @Prop({
+    type: mongoose.Schema.Types.Boolean,
+    required: true,
+    name: 'is_delete',
+    default: false,
+  })
+  isDelete: false;
+
   @Prop({ type: mongoose.Schema.Types.ObjectId, required: true, ref: 'User' })
   user: User;
 

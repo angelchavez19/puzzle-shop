@@ -67,6 +67,14 @@ export class User {
   })
   updatedAt: Date;
 
+  @Prop({
+    type: mongoose.Schema.Types.Boolean,
+    required: true,
+    name: 'is_delete',
+    default: false,
+  })
+  isDelete: false;
+
   @Prop({ type: [mongoose.Schema.Types.ObjectId], ref: 'RefreshToken' })
   refreshTokens: RefreshToken[];
 

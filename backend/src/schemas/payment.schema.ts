@@ -36,6 +36,14 @@ export class Payment {
   })
   status: PaymentStatusT;
 
+  @Prop({
+    type: mongoose.Schema.Types.Boolean,
+    required: true,
+    name: 'is_delete',
+    default: false,
+  })
+  isDelete: false;
+
   @Prop({ type: mongoose.Schema.Types.String, name: 'transaction_id' })
   transactionId: string;
 
