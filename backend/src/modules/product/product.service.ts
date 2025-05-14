@@ -24,6 +24,14 @@ export class ProductService {
       .populate('category', 'name');
   }
 
+  async getDeletedProducts() {
+    return await this.productModel
+      .find()
+      .select('_id name slug description price stock images tags category')
+      .where({ isDelete: true })
+      .populate('category', 'name');
+  }
+
   async getProductBySlug(slug: string) {
     const product = await this.productModel
       .findOne({ slug })
@@ -108,8 +116,29 @@ export class ProductService {
 
       return updated;
     } catch {
+      if (!data)
+        throw new HttpException('Data is required', HttpStatus.BAD_REQUEST);
+
       throw new HttpException(
-        'Failed to create product',
+        'Failed to update product',
+        HttpStatus.INTERNAL_SERVER_ERROR,
+      );
+    }
+  }
+
+  async restoreADeletedProductById(id: string) {
+    try {
+      const updated = await this.productModel.findByIdAndUpdate(
+        id,
+        { $set: { isDelete: false } },
+        { new: true },
+      );
+
+      if (!updated)
+        throw new HttpException('Product not found', HttpStatus.NOT_FOUND);
+    } catch {
+      throw new HttpException(
+        'Failed to restore the product',
         HttpStatus.INTERNAL_SERVER_ERROR,
       );
     }
@@ -127,7 +156,7 @@ export class ProductService {
         throw new HttpException('Product not found', HttpStatus.NOT_FOUND);
     } catch {
       throw new HttpException(
-        'Failed to create product',
+        'Failed to delete product',
         HttpStatus.INTERNAL_SERVER_ERROR,
       );
     }

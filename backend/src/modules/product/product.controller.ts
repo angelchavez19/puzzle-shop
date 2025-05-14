@@ -20,6 +20,11 @@ export class ProductController {
     return this.productService.getAllProducts();
   }
 
+  @Get('deleted')
+  getDeletedProducts() {
+    return this.productService.getDeletedProducts();
+  }
+
   @Get(':slug')
   getProductBySlug(@Param('slug') slug: string) {
     return this.productService.getProductBySlug(slug);
@@ -33,6 +38,11 @@ export class ProductController {
   @Patch(':id')
   updateProductById(@Param('id') id: string, @Body() data: UpdateProductDTO) {
     return this.productService.updateProductById(id, data);
+  }
+
+  @Patch(':id/restore')
+  restoreADeletedProductById(@Param('id') id: string) {
+    return this.productService.restoreADeletedProductById(id);
   }
 
   @Delete(':id')
