@@ -10,7 +10,6 @@ import { Coupon } from './coupon.schema';
 export const UserRoleE = {
   CUSTOMER: 'CUSTOMER',
   ADMIN: 'ADMIN',
-  STAFF: 'STAFF',
   SUPER_ADMIN: 'SUPER_ADMIN',
 } as const;
 
@@ -66,6 +65,14 @@ export class User {
     default: Date.now,
   })
   updatedAt: Date;
+
+  @Prop({
+    type: mongoose.Schema.Types.Boolean,
+    required: true,
+    name: 'is_delete',
+    default: false,
+  })
+  isDelete: false;
 
   @Prop({ type: [mongoose.Schema.Types.ObjectId], ref: 'RefreshToken' })
   refreshTokens: RefreshToken[];

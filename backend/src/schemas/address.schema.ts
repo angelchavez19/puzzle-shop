@@ -33,6 +33,14 @@ export class Address {
   @Prop({ type: mongoose.Schema.Types.String, required: true })
   country: string;
 
+  @Prop({
+    type: mongoose.Schema.Types.Boolean,
+    required: true,
+    name: 'is_delete',
+    default: false,
+  })
+  isDelete: false;
+
   @Prop({ type: [mongoose.Types.ObjectId], ref: 'User' })
   users: User[];
 

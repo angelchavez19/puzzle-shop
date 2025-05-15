@@ -3,6 +3,7 @@ import { GlobalModule } from './global.module';
 import { ConfigModule } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 import { JwtModule } from '@nestjs/jwt';
+import { ProductModule } from './modules/product/product.module';
 
 @Module({
   imports: [
@@ -17,6 +18,7 @@ import { JwtModule } from '@nestjs/jwt';
     }),
     MongooseModule.forRoot('mongodb://localhost:27017/puzzle-shop'),
     GlobalModule,
+    ProductModule,
   ],
   controllers: [],
   providers: [],
