@@ -38,6 +38,11 @@ export class CreateProductDTO {
   @Min(0, { message: 'Stock cannot be negative' })
   stock: number;
 
+  @IsArray({ message: 'Images must be an array' })
+  @ArrayNotEmpty({ message: 'Images cannot be empty' })
+  @IsString({ each: true, message: 'Each image must be a string' })
+  images: string[];
+
   @IsArray({ message: 'Tags must be an array' })
   @ArrayNotEmpty({ message: 'Tags cannot be empty' })
   @IsString({ each: true, message: 'Each tag must be a string' })
