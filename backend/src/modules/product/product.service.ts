@@ -64,7 +64,6 @@ export class ProductService {
       return this.productModel.create({
         ...data,
         slug,
-        images: [],
         ratingAvg: 0,
         category: category._id,
       });

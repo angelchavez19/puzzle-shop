@@ -189,6 +189,7 @@ describe('ProductService', () => {
         },
         price: 24.95,
         stock: 30,
+        images: ['puzzle', 'cube', '3x3', 'magnetic', 'speedcube'],
         tags: ['puzzle', 'cube', '3x3', 'magnetic', 'speedcube'],
         category: '3x3',
       };
@@ -222,6 +223,7 @@ describe('ProductService', () => {
         },
         price: 24.95,
         stock: 10,
+        images: ['cube'],
         tags: ['cube'],
         category: '3x3',
       };
@@ -258,6 +260,7 @@ describe('ProductService', () => {
         },
         price: 24.95,
         stock: 10,
+        images: ['cube'],
         tags: ['cube'],
         category: '3x3',
       };
@@ -282,6 +285,7 @@ describe('ProductService', () => {
             },
             price: 24.95,
             stock: 10,
+            images: ['cube'],
             tags: ['cube'],
             category: '3x3',
           }),
@@ -301,6 +305,7 @@ describe('ProductService', () => {
         },
         price: 24.95,
         stock: 10,
+        images: ['cube'],
         tags: ['cube'],
         category: '3x3',
       };
