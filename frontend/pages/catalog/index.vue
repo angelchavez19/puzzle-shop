@@ -14,8 +14,8 @@ onMounted(async () => {
 </script>
 
 <template>
-  <main class="flex flex-col w-full gap-10">
-    <section class="mt-8">
+  <main class="flex flex-col w-full gap-10 pt-8 pb-10">
+    <section>
       <h1 class="text-center text-3xl">Product Catalog</h1>
     </section>
 

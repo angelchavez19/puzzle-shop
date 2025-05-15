@@ -27,8 +27,8 @@ defineProps<ProductI>();
       <h2 class="text-xl mt-3">{{ name }}</h2>
 
       <p class="pb-4">
-        <span class="text-green-600">$ {{ price }}</span> •
-        <span class="text-red-500">({{ stock }} availables)</span>
+        <span class="text-green-600">$ {{ formatAmount(price) }}</span> •
+        <span class="text-blue-500">({{ stock }} availables)</span>
       </p>
 
       <p class="text-sm">{{ description.longDescription }}</p>
