@@ -31,8 +31,8 @@ export class ProductController {
   }
 
   @Post()
-  createNewProdut(@Body() data: CreateProductDTO) {
-    return this.productService.createNewProdut(data);
+  createNewProduct(@Body() data: CreateProductDTO) {
+    return this.productService.createNewProduct(data);
   }
 
   @Patch(':id')

@@ -16,8 +16,8 @@ export class ProductService {
     private readonly categoryModel: Model<Category>,
   ) {}
 
-  async getAllProducts() {
-    return await this.productModel
+  getAllProducts() {
+    return this.productModel
       .find()
       .select('_id name slug description price stock images tags category')
       .where({ isDelete: false })
@@ -47,7 +47,7 @@ export class ProductService {
     return product;
   }
 
-  async createNewProdut(data: CreateProductDTO) {
+  async createNewProduct(data: CreateProductDTO) {
     try {
       let category = await this.categoryModel.findOne({ name: data.category });
 
@@ -61,7 +61,7 @@ export class ProductService {
 
       if (productWithSlug) slug = generateUniqueSlug(data.name);
 
-      await this.productModel.create({
+      return this.productModel.create({
         ...data,
         slug,
         images: [],
@@ -136,6 +136,8 @@ export class ProductService {
 
       if (!updated)
         throw new HttpException('Product not found', HttpStatus.NOT_FOUND);
+
+      return this.getProductBySlug(updated.slug);
     } catch {
       throw new HttpException(
         'Failed to restore the product',
