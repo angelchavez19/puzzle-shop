@@ -16,7 +16,6 @@ class DescriptionDTO {
   @IsNotEmpty({ message: 'Long description should not be empty' })
   longDescription: string;
 
-  // You can allow additional dynamic keys with string values if needed
   [key: string]: any;
 }
 
