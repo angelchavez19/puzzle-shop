@@ -47,6 +47,21 @@ export class ProductService {
     return product;
   }
 
+  async getProductById(id: string) {
+    const product = await this.productModel
+      .findOne({ _id: id })
+      .select(
+        '_id name slug description price stock images tags ratingAvg category reviews',
+      )
+      .where({ isDelete: false })
+      .populate('category', 'name');
+
+    if (!product)
+      throw new HttpException('Product not found', HttpStatus.NOT_FOUND);
+
+    return product;
+  }
+
   async createNewProduct(data: CreateProductDTO) {
     try {
       let category = await this.categoryModel.findOne({ name: data.category });

@@ -25,9 +25,14 @@ export class ProductController {
     return this.productService.getDeletedProducts();
   }
 
-  @Get(':slug')
+  @Get('by-slug/:slug')
   getProductBySlug(@Param('slug') slug: string) {
     return this.productService.getProductBySlug(slug);
+  }
+
+  @Get('by-id/:id')
+  getProductById(@Param('id') id: string) {
+    return this.productService.getProductById(id);
   }
 
   @Post()
