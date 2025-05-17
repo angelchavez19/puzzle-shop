@@ -20,14 +20,18 @@ onMounted(async () => {
     </section>
 
     <section
-      class="flex flex-wrap justify-center w-full gap-6"
+      class="flex items-center justify-center w-full gap-6"
       v-if="products?.length"
     >
-      <Product
-        v-for="product in products"
-        v-bind="product"
-        :key="product._id"
-      />
+      <div
+        class="flex flex-col items-center justify-center w-full max-w-[800px] px-6"
+      >
+        <AdminProduct
+          v-for="product in products"
+          v-bind="product"
+          :key="product._id"
+        />
+      </div>
     </section>
     <section v-else-if="products">
       <p class="text-center">We don't have any products yet.</p>
