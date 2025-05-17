@@ -19,6 +19,20 @@ onMounted(async () => {
       <h1 class="text-center text-3xl">Product Catalog</h1>
     </section>
 
+    <section class="flex items-center justify-center w-full gap-6">
+      <div
+        class="flex flex-col items-end justify-center w-full max-w-[800px] px-6"
+      >
+        <div>
+          <Button to="/admin/products/create" text="Create">
+            <template #icon>
+              <Icon name="mdi:plus" />
+            </template>
+          </Button>
+        </div>
+      </div>
+    </section>
+
     <section
       class="flex items-center justify-center w-full gap-6"
       v-if="products?.length"
