@@ -5,10 +5,18 @@ import type { ProductI } from "~/types/product.type";
 
 const products: Ref<ProductI[] | undefined> = ref();
 
-onMounted(async () => {
+const loadProducts = async () => {
   const response = await axios.get<ProductI[]>(`${BACKEND_URL}/product`);
   products.value = response.data;
+};
 
+const deleteProduct = async (id: string) => {
+  await axios.delete(`${BACKEND_URL}/product/${id}`);
+  await loadProducts();
+};
+
+onMounted(async () => {
+  await loadProducts();
   useColorModeStore();
 });
 </script>
@@ -44,6 +52,7 @@ onMounted(async () => {
           v-for="product in products"
           v-bind="product"
           :key="product._id"
+          @delete-product="deleteProduct"
         />
       </div>
     </section>

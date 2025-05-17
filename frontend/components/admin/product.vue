@@ -2,6 +2,7 @@
 import type { ProductI } from "~/types/product.type";
 
 defineProps<ProductI>();
+defineEmits(["deleteProduct"]);
 </script>
 
 <template>
@@ -15,7 +16,11 @@ defineProps<ProductI>();
         <template #icon><Icon name="mdi:pencil" /></template>
       </Button>
 
-      <Button text="Delete" class="bg-(--c-secondary) text-(--c-text)">
+      <Button
+        @click="$emit('deleteProduct', _id)"
+        text="Delete"
+        class="bg-(--c-secondary) text-(--c-text)"
+      >
         <template #icon><Icon name="mdi:trash" /></template>
       </Button>
     </div>
