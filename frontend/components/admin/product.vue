@@ -11,7 +11,7 @@ defineProps<ProductI>();
     <h2>{{ name }}</h2>
 
     <div class="flex items-center justify-between gap-2">
-      <Button text="Edit" :to="`/admin/products/${_id}`">
+      <Button text="Edit" :to="`/admin/products/edit/${_id}`">
         <template #icon><Icon name="mdi:pencil" /></template>
       </Button>
 
