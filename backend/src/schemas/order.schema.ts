@@ -3,7 +3,7 @@ import mongoose, { HydratedDocument } from 'mongoose';
 import { Address } from './address.schema';
 import { User } from './user.schema';
 import { Payment } from './payment.schema';
-import { Product } from './product.schema';
+import { Product } from '../modules/product/entities/product.schema';
 
 export const OrderStatusE = {
   pending: 'PENDING',

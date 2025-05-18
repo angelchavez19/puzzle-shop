@@ -9,8 +9,8 @@ export const slugify = (value: string): string => {
     .replace(/^-+|-+$/g, '');
 };
 
-export const generateUniqueSlug = (base: string): string => {
+export const generateUniqueSlug = (base: string, offset?: string): string => {
   const baseSlug = slugify(base);
-  const extra = Date.now().toString(36);
+  const extra = offset ?? Date.now().toString(36);
   return `${baseSlug}-${extra}`;
 };
