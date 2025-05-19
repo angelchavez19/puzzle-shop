@@ -1,14 +1,20 @@
 import { Global, Module } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
-import { ConfigCommonService } from './common/config.common';
 import { MongooseModule } from '@nestjs/mongoose';
+import { ConfigCommonService } from './common/config.common';
 import { Address, AddressSchema } from './schemas/address.schema';
 import { CartItem, CartItemSchema } from './schemas/cart-item.schema';
-import { Category, CategorySchema } from './schemas/category.schema';
+import {
+  Category,
+  CategorySchema,
+} from './modules/category/entities/category.schema';
 import { Coupon, CouponSchema } from './schemas/coupon.schema';
 import { Order, OrderSchema } from './schemas/order.schema';
 import { Payment, PaymentSchema } from './schemas/payment.schema';
-import { Product, ProductSchema } from './schemas/product.schema';
+import {
+  Product,
+  ProductSchema,
+} from './modules/product/entities/product.schema';
 import {
   RefreshToken,
   RefreshTokenSchema,

@@ -1,8 +1,8 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import mongoose, { HydratedDocument } from 'mongoose';
 import { User } from './user.schema';
-import { Product } from './product.schema';
-import { Category } from './category.schema';
+import { Product } from '../modules/product/entities/product.schema';
+import { Category } from '../modules/category/entities/category.schema';
 
 export const CouponDiscountTypeE = {
   percent: 'PERCENT',

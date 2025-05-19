@@ -1,10 +1,10 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import mongoose, { HydratedDocument } from 'mongoose';
-import { Order } from './order.schema';
-import { Review } from './review.schema';
-import { CartItem } from './cart-item.schema';
-import { Coupon } from './coupon.schema';
-import { Category } from './category.schema';
+import { Order } from '../../../schemas/order.schema';
+import { Review } from '../../../schemas/review.schema';
+import { CartItem } from '../../../schemas/cart-item.schema';
+import { Coupon } from '../../../schemas/coupon.schema';
+import { Category } from '../../category/entities/category.schema';
 
 export type ProductDocument = HydratedDocument<Product>;
 
