@@ -44,7 +44,22 @@ npm install
 # App Configuration
 
 PORT=8000
+DATABASE_URL=mongodb://localhost:27017/puzzle-shop
 
+# Secrets
+
+JWT_SECRET_KEY=secret
+
+# Client
+
+CLIENT_URL=http://localhost:3000
+
+# Cloudinary
+
+CLOUDINARY_CLOUD_NAME=cloud-name
+CLOUDINARY_API_KEY=api-key
+CLOUDINARY_API_SECRET=api-secret
+CLOUDINARY_PRODUCT_FOLDER=puzzle-shop/products
 ```
 
 1. Run the project:
