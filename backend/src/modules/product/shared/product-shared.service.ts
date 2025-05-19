@@ -3,7 +3,6 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Product } from '../entities/product.schema';
 import { Model } from 'mongoose';
 import { generateUniqueSlug, slugify } from 'src/utils/slug.utils';
-import { CategorySharedService } from 'src/modules/category/shared/category-shared.service';
 
 type Query =
   | string
@@ -15,7 +14,6 @@ export class ProductSharedService {
   constructor(
     @InjectModel(Product.name)
     readonly productModel: Model<Product>,
-    private readonly categoryService: CategorySharedService,
   ) {}
 
   findAllNotDeleteProducts(
