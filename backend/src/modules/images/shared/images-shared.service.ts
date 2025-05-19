@@ -40,4 +40,12 @@ export class ImagesSharedService {
   create(data: object) {
     return this.imageModel.create(data);
   }
+
+  updateAlt(publicId: string, alt: string) {
+    return this.imageModel.findOneAndUpdate(
+      { publicId },
+      { $set: { alt } },
+      { new: true },
+    );
+  }
 }

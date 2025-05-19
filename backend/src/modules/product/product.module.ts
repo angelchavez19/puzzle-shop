@@ -11,6 +11,7 @@ import { UpdateProductService } from './application/update.service';
 import { ProductSharedService } from './shared/product-shared.service';
 import { RestoreProductService } from './application/restore.service';
 import { CategorySharedService } from '../category/shared/category-shared.service';
+import { ImagesSharedService } from '../images/shared/images-shared.service';
 
 @Module({
   controllers: [
@@ -25,6 +26,7 @@ import { CategorySharedService } from '../category/shared/category-shared.servic
     FindAllProductsService,
     FindBySlugProductsService,
     FindDeletedProductsService,
+    ImagesSharedService,
     RestoreProductService,
     ProductSharedService,
     UpdateProductService,

@@ -1,5 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import mongoose, { HydratedDocument } from 'mongoose';
+import { Product } from 'src/modules/product/entities/product.schema';
 
 export type ImageDocument = HydratedDocument<Image>;
 
@@ -28,6 +29,12 @@ export class Image {
 
   @Prop({ type: mongoose.Schema.Types.String, required: true })
   originalFilename: string;
+
+  @Prop({ type: mongoose.Schema.Types.String })
+  alt: string;
+
+  @Prop({ type: mongoose.Schema.Types.ObjectId })
+  product: Product;
 }
 
 export const ImageSchema = SchemaFactory.createForClass(Image);

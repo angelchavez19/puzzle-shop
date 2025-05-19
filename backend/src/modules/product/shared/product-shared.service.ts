@@ -24,6 +24,7 @@ export class ProductSharedService {
       .select(query)
       .where({ isDelete: false })
       .populate('category', 'name')
+      .populate('images', 'publicId url alt')
       .exec();
   }
 
@@ -35,6 +36,7 @@ export class ProductSharedService {
       .select(query)
       .where({ isDelete: true })
       .populate('category', 'name')
+      .populate('images', 'publicId url alt')
       .exec();
   }
 
@@ -46,6 +48,7 @@ export class ProductSharedService {
       )
       .where({ isDelete: false })
       .populate('category', 'name')
+      .populate('images', 'publicId url alt')
       .exec();
   }
 

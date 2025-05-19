@@ -19,6 +19,16 @@ class DescriptionDTO {
   [key: string]: any;
 }
 
+class ImageDTO {
+  @IsString({ message: 'Public Id must be a string' })
+  @IsNotEmpty({ message: 'Public Id should not be empty' })
+  publicId: string;
+
+  @IsString({ message: 'Alt must be a string' })
+  @IsNotEmpty({ message: 'Alt should not be empty' })
+  alt: string;
+}
+
 export class CreateProductDTO {
   @IsString({ message: 'Name must be a string' })
   @IsNotEmpty({ message: 'Name is required' })
@@ -39,8 +49,9 @@ export class CreateProductDTO {
 
   @IsArray({ message: 'Images must be an array' })
   @ArrayNotEmpty({ message: 'Images cannot be empty' })
-  @IsString({ each: true, message: 'Each image must be a string' })
-  images: string[];
+  @ValidateNested({ each: true })
+  @Type(() => ImageDTO)
+  images: ImageDTO[];
 
   @IsArray({ message: 'Tags must be an array' })
   @ArrayNotEmpty({ message: 'Tags cannot be empty' })
