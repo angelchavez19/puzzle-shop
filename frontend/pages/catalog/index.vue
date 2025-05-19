@@ -6,7 +6,7 @@ import type { ProductI } from "~/types/product.type";
 const products: Ref<ProductI[] | undefined> = ref();
 
 onMounted(async () => {
-  const response = await axios.get<ProductI[]>(`${BACKEND_URL}/product`);
+  const response = await axios.get<ProductI[]>(`${BACKEND_URL}/products`);
   products.value = response.data;
 
   useColorModeStore();

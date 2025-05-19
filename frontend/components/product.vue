@@ -11,8 +11,8 @@ defineProps<ProductI>();
   >
     <div class="w-60 h-60 overflow-hidden">
       <img
-        :src="images[0]"
-        :alt="name"
+        :src="images[0].url"
+        :alt="images[0].alt"
         class="object-contain"
         width="240"
         height="240"

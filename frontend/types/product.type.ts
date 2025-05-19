@@ -2,19 +2,26 @@ export interface ProductI {
   _id: string;
   name: string;
   slug: string;
-  description: DescriptionI;
+  description: Description;
   price: number;
   stock: number;
-  images: string[];
   tags: string[];
-  category: CategoryI;
+  category: Category;
+  images: Image[];
 }
 
-export interface CategoryI {
+export interface Category {
   _id: string;
   name: string;
 }
 
-export interface DescriptionI {
+export interface Description {
   longDescription: string;
+}
+
+export interface Image {
+  _id: string;
+  publicId: string;
+  url: string;
+  alt: string;
 }

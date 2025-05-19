@@ -32,7 +32,7 @@ const onSubmit = handleSubmit(async (data) => {
 });
 
 const route = useRoute();
-const paramId = route.params.id;
+const paramSlug = route.params.slug;
 const productData: Ref<ProductI | null | undefined> = ref();
 
 const images = ref("");
@@ -42,14 +42,14 @@ const details = ref("");
 onMounted(async () => {
   useColorModeStore();
 
-  if (!paramId) {
+  if (!paramSlug) {
     productData.value = null;
     return;
   }
 
   try {
     const response = await axios.get<ProductI>(
-      `${BACKEND_URL}/product/by-id/${paramId}`
+      `${BACKEND_URL}/product/by-slug/${paramSlug}`
     );
 
     productData.value = response.data;
