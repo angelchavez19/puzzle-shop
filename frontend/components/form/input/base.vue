@@ -2,43 +2,43 @@
   <!-- Outer -->
   <div class="flex flex-col w-full gap-0.5">
     <!-- Wrapper -->
-    <div class="">
+    <div>
       <!-- Label -->
-      <div v-if="$slots.label" class="">
+      <div v-if="$slots.label">
         <slot name="label" />
       </div>
 
       <!-- Inner -->
-      <div class="">
+      <div>
         <!-- Prefix Icon -->
-        <div v-if="$slots.prefixIcon" class="">
+        <div v-if="$slots.prefixIcon">
           <slot name="prefixIcon" />
         </div>
 
         <!-- Prefix -->
-        <div v-if="$slots.prefix" class="">
+        <div v-if="$slots.prefix">
           <slot name="prefix" />
         </div>
 
         <!-- Input -->
-        <div v-if="$slots.default" class="">
+        <div v-if="$slots.default">
           <slot />
         </div>
 
         <!-- Sufix -->
-        <div v-if="$slots.sufix" class="">
+        <div v-if="$slots.sufix">
           <slot name="sufix" />
         </div>
 
         <!-- Sufix Icon -->
-        <div v-if="$slots.sufixIcon" class="">
+        <div v-if="$slots.sufixIcon">
           <slot name="sufixIcon" />
         </div>
       </div>
     </div>
 
     <!-- Help -->
-    <div v-if="$slots.help" class="">
+    <div v-if="$slots.help">
       <slot name="help" />
     </div>
 
