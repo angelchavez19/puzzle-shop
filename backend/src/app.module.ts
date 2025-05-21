@@ -5,6 +5,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { GlobalModule } from './global.module';
 import { ProductModule } from './modules/product/product.module';
 import { CategoryModule } from './modules/category/category.module';
+import { ImagesModule } from './modules/images/images.module';
 
 @Module({
   imports: [
@@ -23,6 +24,7 @@ import { CategoryModule } from './modules/category/category.module';
     ),
     ProductModule,
     CategoryModule,
+    ImagesModule,
   ],
   controllers: [],
   providers: [],

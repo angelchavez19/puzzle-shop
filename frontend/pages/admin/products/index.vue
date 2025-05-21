@@ -6,12 +6,12 @@ import type { ProductI } from "~/types/product.type";
 const products: Ref<ProductI[] | undefined> = ref();
 
 const loadProducts = async () => {
-  const response = await axios.get<ProductI[]>(`${BACKEND_URL}/product`);
+  const response = await axios.get<ProductI[]>(`${BACKEND_URL}/products`);
   products.value = response.data;
 };
 
-const deleteProduct = async (id: string) => {
-  await axios.delete(`${BACKEND_URL}/product/${id}`);
+const deleteProduct = async (slug: string) => {
+  await axios.delete(`${BACKEND_URL}/products/${slug}`);
   await loadProducts();
 };
 

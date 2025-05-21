@@ -9,6 +9,7 @@ import {
   CategorySchema,
 } from './modules/category/entities/category.schema';
 import { Coupon, CouponSchema } from './schemas/coupon.schema';
+import { Image, ImageSchema } from './modules/images/entities/image.schema';
 import { Order, OrderSchema } from './schemas/order.schema';
 import { Payment, PaymentSchema } from './schemas/payment.schema';
 import {
@@ -21,6 +22,7 @@ import {
 } from './schemas/refresh-token.schema';
 import { Review, ReviewSchema } from './schemas/review.schema';
 import { User, UserSchema } from './schemas/user.schema';
+import { CloudinaryProvider } from './providers/cloudinary.provider';
 
 @Global()
 @Module({
@@ -30,6 +32,7 @@ import { User, UserSchema } from './schemas/user.schema';
       { name: CartItem.name, schema: CartItemSchema },
       { name: Category.name, schema: CategorySchema },
       { name: Coupon.name, schema: CouponSchema },
+      { name: Image.name, schema: ImageSchema },
       { name: Order.name, schema: OrderSchema },
       { name: Payment.name, schema: PaymentSchema },
       { name: Product.name, schema: ProductSchema },
@@ -38,7 +41,12 @@ import { User, UserSchema } from './schemas/user.schema';
       { name: User.name, schema: UserSchema },
     ]),
   ],
-  providers: [ConfigService, ConfigCommonService],
-  exports: [ConfigService, ConfigCommonService, MongooseModule],
+  providers: [ConfigService, ConfigCommonService, CloudinaryProvider],
+  exports: [
+    ConfigService,
+    ConfigCommonService,
+    MongooseModule,
+    CloudinaryProvider,
+  ],
 })
 export class GlobalModule {}

@@ -5,6 +5,7 @@ import { Review } from '../../../schemas/review.schema';
 import { CartItem } from '../../../schemas/cart-item.schema';
 import { Coupon } from '../../../schemas/coupon.schema';
 import { Category } from '../../category/entities/category.schema';
+import { Image } from 'src/modules/images/entities/image.schema';
 
 export type ProductDocument = HydratedDocument<Product>;
 
@@ -30,9 +31,6 @@ export class Product {
 
   @Prop({ type: mongoose.Schema.Types.Number, required: true })
   stock: number;
-
-  @Prop({ type: [mongoose.Schema.Types.String], required: true })
-  images: string[];
 
   @Prop({ type: [mongoose.Schema.Types.String], required: true })
   tags: string[];
@@ -86,6 +84,13 @@ export class Product {
     ref: 'Category',
   })
   category: Category;
+
+  @Prop({
+    type: [mongoose.Schema.Types.ObjectId],
+    required: true,
+    ref: 'Image',
+  })
+  images: Image[];
 }
 
 export const ProductSchema = SchemaFactory.createForClass(Product);
