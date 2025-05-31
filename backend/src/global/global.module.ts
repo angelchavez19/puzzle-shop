@@ -3,21 +3,22 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { ConfigCommonService } from './services/config.service';
 import { JwtModule } from '@nestjs/jwt';
 import { MongooseModule } from '@nestjs/mongoose';
+import { ErrorResponseNormalizerFilter } from './filters/error-response-normalizer.filter';
+import { databaseConfig } from 'src/config/database.config';
+import { jwtConfig } from 'src/config/jwt.config';
 
 @Global()
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
-    JwtModule.register({
-      global: true,
-      secret: process.env.JWT_SECRET_KEY,
-      signOptions: { expiresIn: '1d' },
-    }),
-    MongooseModule.forRoot(
-      process.env.DATABASE_URL || 'mongodb://localhost:27017/puzzle-shop',
-    ),
+    JwtModule.registerAsync(jwtConfig),
+    MongooseModule.forRootAsync(databaseConfig),
   ],
-  providers: [ConfigService, ConfigCommonService],
-  exports: [ConfigCommonService],
+  providers: [
+    ConfigService,
+    ConfigCommonService,
+    ErrorResponseNormalizerFilter,
+  ],
+  exports: [ConfigCommonService, ErrorResponseNormalizerFilter],
 })
 export class GlobalModule {}

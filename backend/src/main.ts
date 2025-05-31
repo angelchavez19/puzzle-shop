@@ -1,20 +1,50 @@
-import { NestFactory } from '@nestjs/core';
-import { AppModule } from './app.module';
 import { ValidationPipe } from '@nestjs/common';
+import { NestFactory } from '@nestjs/core';
+import {
+  FastifyAdapter,
+  NestFastifyApplication,
+} from '@nestjs/platform-fastify';
+
+import { AppModule } from './app.module';
+import { API } from './constant/route.constant';
+import { ErrorResponseNormalizerFilter } from './global/filters/error-response-normalizer.filter';
+import { ConfigCommonService } from './global/services/config.service';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create<NestFastifyApplication>(
+    AppModule,
+    new FastifyAdapter(),
+    { bufferLogs: true },
+  );
 
-  app.useGlobalPipes(new ValidationPipe());
+  app.setGlobalPrefix(API);
 
-  app.setGlobalPrefix('api');
+  app.useGlobalFilters(app.get(ErrorResponseNormalizerFilter));
+
+  app.useGlobalPipes(
+    new ValidationPipe({
+      whitelist: true,
+      forbidNonWhitelisted: true,
+      transform: true,
+    }),
+  );
+
+  const configService = app.get(ConfigCommonService);
 
   app.enableCors({
-    origin: [process.env.CLIENT_URL],
+    origin: [configService.client_url],
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
   });
 
-  await app.listen(process.env.PORT ?? 8000);
+  await app.listen(configService.port);
 }
-void bootstrap();
+
+bootstrap().catch(handleError);
+
+function handleError(error: unknown) {
+  console.error(error);
+  process.exit(1);
+}
+
+process.on('uncaughtException', handleError);
