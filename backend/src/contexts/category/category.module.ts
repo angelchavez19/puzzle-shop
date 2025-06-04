@@ -1,16 +1,14 @@
 import { Module } from '@nestjs/common';
-import {
-  CreateCategoryControllerV1,
-  FilterCategoryControllerV1,
-} from './infrastructure/http-api/v1/controllers';
+import { MongooseModule } from '@nestjs/mongoose';
 import { CreateCategoryUseCase, FilterCategoriesUseCase } from './application';
 import { CategoryRepository } from './domain';
-import { CategoryMongoRepository } from './infrastructure/persistence/repositories/category.mongo.repository';
-import { MongooseModule } from '@nestjs/mongoose';
 import {
   Category,
+  CategoryMongoRepository,
   CategorySchema,
-} from './infrastructure/persistence/category.schema';
+  CreateCategoryControllerV1,
+  FilterCategoryControllerV1,
+} from './infrastructure';
 
 @Module({
   imports: [
