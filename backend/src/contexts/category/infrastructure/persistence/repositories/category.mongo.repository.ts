@@ -1,11 +1,11 @@
 import { Injectable } from 'src/shared';
-import { CategoryEntity, CategoryRepository } from '../../domain';
+import { CategoryEntity, CategoryRepository } from '../../../domain';
 import { InjectModel } from '@nestjs/mongoose';
-import { Category } from './category.schema';
+import { Category } from '../category.schema';
 import { Model } from 'mongoose';
 
 @Injectable()
-export class InMemoryCategoryRepository implements CategoryRepository {
+export class CategoryMongoRepository implements CategoryRepository {
   constructor(
     @InjectModel(Category.name)
     private readonly categoryModel: Model<Category>,

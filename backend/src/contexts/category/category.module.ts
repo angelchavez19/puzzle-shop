@@ -5,7 +5,7 @@ import {
 } from './infrastructure/http-api/v1/controllers';
 import { CreateCategoryUseCase, FilterCategoriesUseCase } from './application';
 import { CategoryRepository } from './domain';
-import { InMemoryCategoryRepository } from './infrastructure/persistence/in-memory.category.repository';
+import { CategoryMongoRepository } from './infrastructure/persistence/repositories/category.mongo.repository';
 import { MongooseModule } from '@nestjs/mongoose';
 import {
   Category,
@@ -24,9 +24,8 @@ import {
     FilterCategoriesUseCase,
     {
       provide: CategoryRepository,
-      useExisting: InMemoryCategoryRepository,
+      useClass: CategoryMongoRepository,
     },
-    InMemoryCategoryRepository,
   ],
   exports: [MongooseModule, CreateCategoryUseCase, FilterCategoriesUseCase],
 })
